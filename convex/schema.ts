@@ -12,6 +12,7 @@ export default defineSchema({
     name: v.optional(v.string()),
     image: v.optional(v.string()),
     email: v.optional(v.string()),
+    isAdmin: v.optional(v.boolean()),
     isVerifiedOnPlatform: v.optional(v.boolean()),
     emailVerificationTime: v.optional(v.number()),
     phone: v.optional(v.string()),

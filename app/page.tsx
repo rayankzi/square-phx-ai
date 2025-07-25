@@ -1,36 +1,17 @@
-"use client";
+import { SignOutButton } from "@/components/sign-out";
+import { api } from "@/convex/_generated/api";
+import { convexAuthNextjsToken } from "@convex-dev/auth/nextjs/server";
+import { fetchQuery } from "convex/nextjs";
 
-import { useConvexAuth } from "convex/react";
-import { useAuthActions } from "@convex-dev/auth/react";
-import { useRouter } from "next/navigation";
+export default async function Home() {
+  const token = await convexAuthNextjsToken();
+  const x = await fetchQuery(api.users.all, {}, { token });
+  console.log(x);
 
-export default function Home() {
   return (
     <div>
       <p>Hi</p>
       <SignOutButton />
     </div>
-  );
-}
-
-export function SignOutButton() {
-  const { isAuthenticated } = useConvexAuth();
-  const { signOut } = useAuthActions();
-  const router = useRouter();
-  return (
-    <>
-      {isAuthenticated && (
-        <button
-          className="bg-slate-200 dark:bg-slate-800 text-foreground rounded-md px-2 py-1"
-          onClick={() =>
-            void signOut().then(() => {
-              router.push("/sign-in");
-            })
-          }
-        >
-          Sign out
-        </button>
-      )}
-    </>
   );
 }
