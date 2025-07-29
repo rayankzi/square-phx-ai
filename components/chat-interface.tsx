@@ -40,6 +40,11 @@ export function ChatInterface({
         setHasNavigated(true);
       }
     },
+    onError: () => {
+      toast(
+        "Something went wrong ❌, probably because it's production & AI is expensive!",
+      );
+    },
   });
   console.log(currentChatId);
 
@@ -52,7 +57,9 @@ export function ChatInterface({
       handleChatSubmit(e);
     } catch (error) {
       console.log(error);
-      toast("Something went wrong while making the chat ❌");
+      toast(
+        "Something went wrong ❌, probably because it's production & AI is expensive!",
+      );
     }
   };
 
