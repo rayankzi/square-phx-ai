@@ -1,3 +1,4 @@
+import { GlobalCommandDialog } from "@/components/global-command-dialog";
 import { api } from "@/convex/_generated/api";
 import { convexAuthNextjsToken } from "@convex-dev/auth/nextjs/server";
 import { fetchQuery } from "convex/nextjs";
@@ -14,5 +15,10 @@ export default async function MainLayout({
   if (!dbUser) return redirect("/sign-in");
   if (!dbUser.isVerifiedOnPlatform) return redirect("/not-verified");
 
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <GlobalCommandDialog />
+    </>
+  );
 }

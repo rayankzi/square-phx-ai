@@ -5,7 +5,6 @@ import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server";
 import { ConvexClientProvider } from "@/providers/convex";
 import { ThemeProvider } from "@/providers/theme";
 import { Toaster } from "@/components/ui/sonner";
-import { GlobalCommandDialog } from "@/components/global-command-dialog";
 
 const outfit = Outfit({
   variable: "--font-sans",
@@ -37,7 +36,6 @@ export default function RootLayout({
               disableTransitionOnChange
             >
               {children}
-              <GlobalCommandDialog />
               <Toaster />
             </ThemeProvider>
           </ConvexClientProvider>
