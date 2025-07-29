@@ -3,6 +3,9 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server";
 import { ConvexClientProvider } from "@/providers/convex";
+import { ThemeProvider } from "@/providers/theme";
+import { Toaster } from "@/components/ui/sonner";
+import { GlobalCommandDialog } from "@/components/global-command-dialog";
 
 const outfit = Outfit({
   variable: "--font-sans",
@@ -24,9 +27,20 @@ export default function RootLayout({
 }>) {
   return (
     <ConvexAuthNextjsServerProvider>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body className={`${outfit.variable} antialiased`}>
-          <ConvexClientProvider>{children}</ConvexClientProvider>
+          <ConvexClientProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {children}
+              <GlobalCommandDialog />
+              <Toaster />
+            </ThemeProvider>
+          </ConvexClientProvider>
         </body>
       </html>
     </ConvexAuthNextjsServerProvider>
