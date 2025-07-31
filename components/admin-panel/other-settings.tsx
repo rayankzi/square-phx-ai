@@ -10,6 +10,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Settings } from "lucide-react";
+import Link from "next/link";
 
 export function OtherSettings() {
   return (
@@ -30,13 +31,14 @@ export function OtherSettings() {
             </DialogDescription>
           </DialogHeader>
 
-          {/* TODO: implement */}
-          <div className="grid gap-2">
-            <Button className="cursor-pointer">Download Tagger</Button>
-            <p className="text-sm">
-              Download application for tagging all Google Drive files
-            </p>
-          </div>
+          <Link href="/drive-tagger.exe">
+            <div className="grid gap-2">
+              <Button className="cursor-pointer">Download Tagger</Button>
+              <p className="text-sm">
+                Download application for tagging all Google Drive files
+              </p>
+            </div>
+          </Link>
 
           <DialogFooter>
             <DialogClose asChild>
